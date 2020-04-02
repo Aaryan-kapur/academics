@@ -1,0 +1,5 @@
+Python is relatively simple,
+so it's easy to learn since it requires a unique syntax that focuses on readability.
+Developers can read and translate Python code much easier than other languages.
+In turn, this reduces the cost of program maintenance and development because,
+it allows teams to work collaboratively without significant language and experience barriers.

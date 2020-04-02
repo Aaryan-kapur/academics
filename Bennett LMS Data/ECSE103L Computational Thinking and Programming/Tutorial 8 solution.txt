@@ -1,0 +1,35 @@
+def single_insert_or_delete(a,b):
+    c=0
+    a=a.lower()
+    b=b.lower()
+    if a==b:
+        return 0
+    if(len(a)==len(b)):
+        for i in range(len(a)):
+            if(a[i]!=b[i]):
+                c+=1
+        if(c==1):
+            return 1
+        else:
+            return 2
+            
+    if(len(a)==len(b)+1):
+        if(b in a):
+            return 1
+        else:
+            for i in range(len(a)):
+                if (b == a[:i]+a[i+1:]):
+                    return 1
+    if(len(b)==len(a)+1):
+        if(a in b):
+            return 1
+        else:
+            for i in range(len(b)):
+                if (a == b[:i]+b[i+1:]):
+                    return 1
+                
+    return 2
+
+a=input()
+b=input()
+print(single_insert_or_delete(a,b))

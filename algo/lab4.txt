@@ -1,0 +1,46 @@
+
+q3
+
+trucks= [1,5,10,25]
+
+number = [0,0,0,0]
+
+n = int(input())
+
+for i in range(len(trucks)-1,-1,-1):
+  # print(trucks[i])
+  for s in range(0,len(number)):
+    if(n>=trucks[i]):
+      number[s] = n//trucks[i]
+      n = n-number[s]*trucks[i]
+
+      print(trucks[i] ,  ":" , number[s] ,"\n")
+
+q4
+
+
+to find 6 in 1,3,4 we expect 3,3 we get 4,1,1
+ `                      
+q5 
+
+
+import random;
+trucks= [1]
+for i in range(0,10):
+  trucks.append(random.randrange(1,50))
+
+trucks.sort()
+print(trucks,"\n")
+number = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+n = int(input())
+
+for i in range(len(trucks)-1,-1,-1):
+  # print(trucks[i])
+  for s in range(0,len(number)):
+    if(n>=trucks[i]):
+      number[s] = n//trucks[i]
+      n = n-number[s]*trucks[i]
+      # print("\n")
+      print(trucks[i] ,  ":" , number[s] ,"\n")
+      # print("____________________________________________________",end=" ")

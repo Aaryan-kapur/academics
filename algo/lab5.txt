@@ -1,0 +1,121 @@
+q1
+
+
+timing = [0,12];
+arr = [["singing",12,100000 ],
+        ["bonfire",12,500000],
+        ["streetplay",2,60000],
+        ["dancing",8,75000],
+        ["shortfilms",10,45000],
+        ["rangoli",4,50000],
+        ["scavenger",4,200000],
+        ["faceart",4,40000],
+        ["soloMusic",7,95000],
+        ["groupMusic",7,150000],
+        ["Mime",11,120000],
+        ["poetry",2,300000]]
+def Diff(li1, li2): 
+    li_dif = [i for i in li1 + li2 if i not in li2] 
+    for i in range(0,len(li_dif)):
+      print(li_dif[i]) 
+n = len(arr)
+for i in range(n): 
+      for j in range(n - 1 - i): 
+          if arr[j][2] < arr[j + 1][2]: 
+              arr[j], arr[j + 1] = arr[j + 1], arr[j]      
+# print(arr)
+lossSum = 0
+result = [False] * n 
+job = ['x'] * n 
+for i in range(len(arr)): 
+  # if result[j] is False:
+  #   lossSum +=arr[i][2]
+  #   print(lossSum)
+
+  for j in range(min(n - 1, arr[i][1] - 1), -1, -1): 
+    if result[j] is False: 
+      result[j] = True
+      job[j] = arr[i][0]
+      break
+arrayOriginal = []
+for i in range(0,len(arr)):
+  arrayOriginal.append(arr[i][0])
+for i in range(len(job)):
+  print(job[i])
+print("\n\n\n\n")
+
+print(Diff(arrayOriginal,job))
+print("\n\n\n")
+# print(arrayOriginal)
+# print(job)
+# for i in range(0,len(arr)):
+#   a=arr[i][2]
+#   print(a)
+
+
+q2
+
+
+DL = [12,12,2,8,10,4,4,4,7,7,11,2]
+Dur = [2,2,1,1,0.5,0.5,1.5,0.5,0.5,1,1,1]
+
+Sch = dict(zip(arr, list(zip(Dur,DL))))
+print(Sch)
+def scheduler(Sch):
+    sorted_Sch = {k: v for k, v in sorted(Sch.items(), key=lambda item: item[1][1])}
+    schedule = []
+    curr_time = 0
+    penal = 0
+    for i,j in sorted_Sch.items():
+        schedule.append(i)
+        print(j[1], curr_time+j[0])
+        if j[1] <= j[0]+curr_time:
+            penal+=50000*(curr_time-j[1])
+        curr_time+=j[0]
+    return schedule, abs(penal)
+
+final, p= scheduler(Sch)
+print(final)
+print(p)
+
+
+
+q3
+
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+x=[]
+y=[]
+coordinates=[]
+for i in range(4):
+  a=random.randint(-40,40)
+  b=random.randint(-40,40)
+  x.append(a)
+  y.append(b)
+with open("clouds.txt",'w',encoding = 'utf-8',) as f:
+  for i in range(0,len(x)):
+    coordinates.append([x[i],y[i]])
+    f.write(str(coordinates[i]))
+    f.write(" \n")
+  plt.scatter(x,y)
+  plt.show()
+  #f.write()
+  # f.close()
+# with open("clouds.txt",'r',encoding = 'utf-8',) as f1:
+  # print(f1.read())
+
+distance = []
+for i in range(len(coordinates)):
+  for j in range(len(coordinates)):
+    if(i !=j):
+      mindist= ((coordinates[i][0] - coordinates[j][0])**2 + (coordinates[i][1]-coordinates[j][1])**2)**0.5
+      distance.append([coordinates[i],coordinates[j],mindist])
+# for i in range(0,len(distance)):
+#   # print(distance[i],"\n")
+n= len(distance)
+for i in range(n): 
+  for j in range(n - 1 - i): 
+    if distance[j][2] < distance[j + 1][2]: 
+      distance[j], distance[j + 1] = distance[j + 1], distance[j]  
+print(distance[n-1])  

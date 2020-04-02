@@ -1,0 +1,12 @@
+Saving and accessing information
+Searching items
+   Add, delete and modify items
+check availability of the items
+generate requests for new books
+get access to all user requests
+get notification when items are overdue
+Issue and return books 
+monitor all activities, and item statuses.
+Pay fines on the website.
+Manage and view user memberships.
+allow to delete, add users.
